@@ -2,20 +2,38 @@
   "type": "module",
   "name": "navigation-server",
   "version": "1.0.0",
-  "description": "导航网站后端",
-  "main": "app.js",
-  "repository": "https://github.com/rgbjs/navigation-server",
-  "author": "feiYu",
-  "license": "MIT",
+  "description": "",
+  "main": "./dist/index.js",
   "scripts": {
-    "dev": "node app.js"
+    "dev": "cross-env NODE_ENV=development tsx watch ./src/index.ts",
+    "debug": "cross-env NODE_ENV=development tsx watch --inspect ./src/index.ts"
   },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
   "dependencies": {
-    "bcrypt": "^5.1.0",
-    "cors": "^2.8.5",
-    "express": "^4.18.2",
-    "jsonwebtoken": "^9.0.0",
-    "mongoose": "^7.1.0",
-    "nodemailer": "^6.9.2"
+    "@koa/bodyparser": "^5.1.1",
+    "ali-oss": "^6.22.0",
+    "bcrypt": "^5.1.1",
+    "dayjs": "^1.11.13",
+    "koa-router": "^13.0.1",
+    "koa-static": "^5.0.0",
+    "log4js": "^6.9.1",
+    "mysql2": "^3.12.0",
+    "nanoid": "^5.0.9",
+    "path-to-regexp": "^8.2.0",
+    "uxiu": "0.2.0-dev-7",
+    "xss": "^1.0.15"
+  },
+  "devDependencies": {
+    "@types/ali-oss": "^6.16.11",
+    "@types/bcrypt": "^5.0.2",
+    "@types/koa": "^2.15.0",
+    "@types/koa-router": "^7.4.8",
+    "@types/koa-static": "^4.0.4",
+    "@types/node": "^22.10.2",
+    "cross-env": "^7.0.3",
+    "tsx": "^4.19.2",
+    "typescript": "^5.7.2"
   }
 }
