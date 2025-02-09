@@ -9,7 +9,7 @@ const { host, port, database, user, password } = mysql.connect
 await init()
 
 // 创建连接池
-const pool = mysql2.createPool({
+export const pool = mysql2.createPool({
 	host,
 	port,
 	database,

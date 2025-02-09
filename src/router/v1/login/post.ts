@@ -1,5 +1,4 @@
-import { sleep } from 'uxiu'
-import { createCheck } from '#utils'
+import { sleep, createCheck } from 'uxiu'
 import { hash, encipher } from '#common'
 import { admin } from '#db'
 import Router from 'koa-router'
@@ -11,7 +10,7 @@ router.post('/', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -62,7 +61,7 @@ const check = createCheck([
 		},
 		length: {
 			expect: {
-				min: 5,
+				min: 3,
 				max: 12
 			},
 			fail: '管理员账号长度为5-12位'

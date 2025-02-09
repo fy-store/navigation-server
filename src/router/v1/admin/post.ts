@@ -66,7 +66,7 @@ const check = createCheck([
 		},
 		length: {
 			expect: {
-				min: 5,
+				min: 3,
 				max: 12
 			},
 			fail: '管理员账号长度为5-12位'

@@ -75,10 +75,10 @@ const check = createCheck([
 		},
 		length: {
 			expect: {
-				min: 1,
+				min: 0,
 				max: 500
 			},
-			fail: '链接地址长度只能为 1 - 500 个字符'
+			fail: '链接图标长度只能为 0 - 500 个字符'
 		}
 	},
 	{

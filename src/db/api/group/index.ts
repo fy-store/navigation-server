@@ -55,7 +55,7 @@ export const getById = (id: number) => {
 			end as links
         from \`${group.name}\` as g
 		left join ${link.name} as l on g.id = l.group_id and l.delete_time is null
-        where id = ? and g.delete_time is null
+        where g.id = ? and g.delete_time is null
 		group by g.id, g.name, g.remark, g.create_time, g.update_time;
     `
 	return execute(sql, [id])

@@ -1,4 +1,4 @@
-import { isArray, isReferenceValue } from 'uxiu'
+import { isArray, isObject, isReferenceValue } from 'uxiu'
 import { logger } from '#common'
 import type { Context, Next } from 'koa'
 
@@ -21,7 +21,7 @@ export default () => {
 						query,
 						params,
 						body,
-						return: hideData(ctx.body as object)
+						return: isObject(ctx.body) ? hideData(ctx.body) : ctx.body
 					},
 					null,
 					2

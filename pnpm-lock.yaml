@@ -11,6 +11,9 @@ importers:
       '@koa/bodyparser':
         specifier: ^5.1.1
         version: 5.1.1(koa@2.15.3)
+      '@koa/cors':
+        specifier: ^5.0.0
+        version: 5.0.0
       ali-oss:
         specifier: ^6.22.0
         version: 6.22.0
@@ -39,8 +42,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
       uxiu:
-        specifier: 0.2.0-dev-7
-        version: 0.2.0-dev-7
+        specifier: 0.3.0
+        version: 0.3.0
       xss:
         specifier: ^1.0.15
         version: 1.0.15
@@ -60,6 +63,9 @@ importers:
       '@types/koa-static':
         specifier: ^4.0.4
         version: 4.0.4
+      '@types/koa__cors':
+        specifier: ^5.0.0
+        version: 5.0.0
       '@types/node':
         specifier: ^22.10.2
         version: 22.10.10
@@ -228,6 +234,10 @@ packages:
     peerDependencies:
       koa: ^2.14.1
 
+  '@koa/cors@5.0.0':
+    resolution: {integrity: sha512-x/iUDjcS90W69PryLDIMgFyV21YLTnG9zOpPXS7Bkt2b8AsY3zZsIpOLBkYr9fBcF3HbkKaER5hOBZLfpLgYNw==}
+    engines: {node: '>= 14.0.0'}
+
   '@mapbox/node-pre-gyp@1.0.11':
     resolution: {integrity: sha512-Yhlar6v9WQgUp/He7BdgzOz8lqMQ8sU+jkCq7Wx8Myc5YFJLbEe7lgui/V7G1qB1DJykHSGwreceSaD60Y0PUQ==}
     hasBin: true
@@ -282,6 +292,9 @@ packages:
 
   '@types/koa@2.15.0':
     resolution: {integrity: sha512-7QFsywoE5URbuVnG3loe03QXuGajrnotr3gQkXcEBShORai23MePfFYdhz90FEtBBpkyIYQbVD+evKtloCgX3g==}
+
+  '@types/koa__cors@5.0.0':
+    resolution: {integrity: sha512-LCk/n25Obq5qlernGOK/2LUwa/2YJb2lxHUkkvYFDOpLXlVI6tKcdfCHRBQnOY4LwH6el5WOLs6PD/a8Uzau6g==}
 
   '@types/mime@1.3.5':
     resolution: {integrity: sha512-/pyBZWSLD2n0dcHE3hq8s8ZvcETHtEuF+3E7XVt0Ig2nvsVQXdghHVcEkIWjy9A0wKfTn97a/PSDYohKIlnP/w==}
@@ -1119,8 +1132,8 @@ packages:
     resolution: {integrity: sha512-PYxZDA+6QtvRvm//++aGdmKG/cI07jNwbROz0Ql+VzFV1+Z0Dy55NI4zZ7RHc9KKpBePNFwoErqIuqQv/cjiTA==}
     engines: {node: '>= 0.12.0'}
 
-  uxiu@0.2.0-dev-7:
-    resolution: {integrity: sha512-DUrL0OemW+e3cFg0SJhzcflpf3V2IxHBtDE1CO7DBkhvskQdiMPuAc4EF3J+ab8sWV0KdYUD+KUkplTJ7HdlwA==}
+  uxiu@0.3.0:
+    resolution: {integrity: sha512-JP7DBwqedqSM/IWCjzlhcZks71P3PlSAk/vCVvZ/jw63U3J3olufrPeVPYZEIdEEFy4RyB2u18hlH9BKi8Z90Q==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
   vary@1.1.2:
@@ -1255,6 +1268,10 @@ snapshots:
       lodash.merge: 4.6.2
       type-is: 1.6.18
 
+  '@koa/cors@5.0.0':
+    dependencies:
+      vary: 1.1.2
+
   '@mapbox/node-pre-gyp@1.0.11':
     dependencies:
       detect-libc: 2.0.3
@@ -1345,6 +1362,10 @@ snapshots:
       '@types/keygrip': 1.0.6
       '@types/koa-compose': 3.2.8
       '@types/node': 22.10.10
+
+  '@types/koa__cors@5.0.0':
+    dependencies:
+      '@types/koa': 2.15.0
 
   '@types/mime@1.3.5': {}
 
@@ -2237,11 +2258,9 @@ snapshots:
       mz: 2.7.0
       unescape: 1.0.1
 
-  uxiu@0.2.0-dev-7:
+  uxiu@0.3.0:
     dependencies:
       koa: 2.15.3
-      koa-router: 13.0.1
-      koa-static: 5.0.0
       nanoid: 5.0.9
     transitivePeerDependencies:
       - supports-color

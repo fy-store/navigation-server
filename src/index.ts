@@ -1,12 +1,14 @@
 import { createApp } from 'uxiu'
 import { bodyParser } from '@koa/bodyparser'
 import { logger } from '#common'
+import cors from '@koa/cors'
 import { preventInjection, userSession, verifyPower, reqLog } from '#middleware'
 
 createApp({
 	port: 3323,
 	async mounted(ctx) {
 		ctx.app.on('error', routerError)
+		ctx.app.use(cors())
 		ctx.app.use(bodyParser())
 		ctx.app.use(userSession())
 		ctx.app.use(verifyPower())

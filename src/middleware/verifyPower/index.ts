@@ -37,15 +37,15 @@ export default () => {
 			router: [
 				{
 					methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-					path: 'admin'
+					path: 'admin{/:id}'
 				},
 				{
 					methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-					path: 'group'
+					path: 'group{/:id}'
 				},
 				{
 					methods: ['GET', 'POST', 'PATCH', 'DELETE'],
-					path: 'link'
+					path: 'link{/:id}'
 				}
 			],
 			whiteRouter: [
@@ -58,7 +58,7 @@ export default () => {
 	})
 
 	return async (ctx: Context, next: Next) => {
-		const authorization = ctx.headers['authorization'] ? ctx.headers['authorization'].split(' ')[1] : ''
+		const authorization = ctx.get('authorization') ? ctx.get('authorization').split(' ')[1] : ''
 		const sessionId = (() => {
 			try {
 				return encipher.decrypted(authorization)
@@ -74,7 +74,7 @@ export default () => {
 
 		if (!authorization) {
 			ctx.body = {
-				code: 1,
+				code: -1,
 				msg: '请先登录'
 			}
 			return

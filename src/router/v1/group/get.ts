@@ -9,7 +9,6 @@ router.get('/', async (ctx) => {
 	ctx.body = {
 		code: 0,
 		msg: '获取列表成功',
-		// data: list
 		data: list.map((it) => {
 			return {
 				...it,

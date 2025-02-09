@@ -1,5 +1,5 @@
 import { createCheck } from '#utils'
-import { group } from '#db'
+import { group, link } from '#db'
 import Router from 'koa-router'
 const router = new Router()
 export default router
@@ -24,6 +24,10 @@ router.del('/:id', async (ctx) => {
 		return
 	}
 
+	const [linkList] = await link.getListByGroupId(+id)
+	if (linkList.length) {
+		await link.deleteByIds(linkList.map((it) => it.id))
+	}
 	await group.deleteById(+id)
 	ctx.body = {
 		code: 0,

@@ -1,10 +1,10 @@
 import { mysql } from '#conf'
-import { execute } from '#dbConnect'
+import { execute, pool } from '#dbConnect'
 const { link } = mysql.tables
 
 export const getList = (group_id: number) => {
 	const sql = /*sql*/ `
-        select id, name, remark, create_time as createTime, update_time as updateTime
+        select id, name, url, icon, remark, create_time as createTime, update_time as updateTime
         from \`${link.name}\`
         where group_id = ? and delete_time is null
     `
@@ -13,9 +13,18 @@ export const getList = (group_id: number) => {
 
 export const getById = (id: number) => {
 	const sql = /*sql*/ `
-        select id, name, remark, create_time as createTime, update_time as updateTime
+        select id, name, url, icon, remark, create_time as createTime, update_time as updateTime
         from \`${link.name}\`
         where id = ? and delete_time is null
+    `
+	return execute(sql, [id])
+}
+
+export const getListByGroupId = (id: number) => {
+	const sql = /*sql*/ `
+        select id, name, remark, create_time as createTime, update_time as updateTime
+        from \`${link.name}\`
+        where group_id = ? and delete_time is null
     `
 	return execute(sql, [id])
 }
@@ -58,4 +67,15 @@ export const updateById = (id: number, params: UpdateParams) => {
         where id = ? and delete_time is null
     `
 	return execute(sql, [name, url, icon, remark, id])
+}
+
+export const deleteByIds = async (ids: number[]) => {
+	const placeholders = ids.map(() => '?').join(',')
+	const sql = /*sql*/ `
+        UPDATE \`${link.name}\`
+        SET delete_time = NOW()
+        WHERE id IN (${placeholders})
+        AND delete_time IS NULL
+    `
+	return execute(sql, ids)
 }
