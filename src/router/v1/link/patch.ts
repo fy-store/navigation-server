@@ -1,4 +1,4 @@
-import { createCheck } from '#utils'
+import { createCheck } from 'uxiu'
 import { link } from '#db'
 import Router from 'koa-router'
 const router = new Router()
@@ -9,7 +9,7 @@ router.patch('/:id', async (ctx) => {
 	if (!checkIdInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkIdInfo.failMessageList[0]
+			msg: checkIdInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -18,7 +18,7 @@ router.patch('/:id', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -88,13 +88,10 @@ const check = createCheck([
 	},
 	{
 		field: 'icon',
+		required: false,
 		type: {
 			expect: 'string',
-			fail: 'icon 类型必须是字符串',
-			verify(data, checkFn) {
-				if (data === void 0) return true
-				return checkFn()
-			}
+			fail: 'icon 类型必须是字符串'
 		},
 		length: {
 			expect: {
@@ -106,13 +103,10 @@ const check = createCheck([
 	},
 	{
 		field: 'remark',
+		required: false,
 		type: {
 			expect: 'string',
-			fail: 'remark 类型必须是字符串',
-			verify(data, checkFn) {
-				if (data === void 0) return true
-				return checkFn()
-			}
+			fail: 'remark 类型必须是字符串'
 		},
 		length: {
 			expect: {

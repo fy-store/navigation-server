@@ -23,7 +23,7 @@
     "mysql2": "^3.12.0",
     "nanoid": "^5.0.9",
     "path-to-regexp": "^8.2.0",
-    "uxiu": "0.3.0",
+    "uxiu": "0.4.1",
     "xss": "^1.0.15"
   },
   "devDependencies": {

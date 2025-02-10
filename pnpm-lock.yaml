@@ -42,8 +42,8 @@ importers:
         specifier: ^8.2.0
         version: 8.2.0
       uxiu:
-        specifier: 0.3.0
-        version: 0.3.0
+        specifier: 0.4.1
+        version: 0.4.1
       xss:
         specifier: ^1.0.15
         version: 1.0.15
@@ -1132,8 +1132,8 @@ packages:
     resolution: {integrity: sha512-PYxZDA+6QtvRvm//++aGdmKG/cI07jNwbROz0Ql+VzFV1+Z0Dy55NI4zZ7RHc9KKpBePNFwoErqIuqQv/cjiTA==}
     engines: {node: '>= 0.12.0'}
 
-  uxiu@0.3.0:
-    resolution: {integrity: sha512-JP7DBwqedqSM/IWCjzlhcZks71P3PlSAk/vCVvZ/jw63U3J3olufrPeVPYZEIdEEFy4RyB2u18hlH9BKi8Z90Q==}
+  uxiu@0.4.1:
+    resolution: {integrity: sha512-VaSZNM20YrYw/eFehbHI5+imICSVEWlcvFvJdA1+CLDBEQ+7BVuGptV4/Npy5EF3TJ0RS9Jy1xoD8brix92BkA==}
     engines: {node: ^18.0.0 || ^20.0.0 || >=22.0.0}
 
   vary@1.1.2:
@@ -2258,7 +2258,7 @@ snapshots:
       mz: 2.7.0
       unescape: 1.0.1
 
-  uxiu@0.3.0:
+  uxiu@0.4.1:
     dependencies:
       koa: 2.15.3
       nanoid: 5.0.9

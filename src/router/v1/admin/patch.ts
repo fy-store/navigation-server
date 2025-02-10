@@ -1,7 +1,6 @@
-import { createCheck } from '#utils'
 import { admin } from '#db'
 import Router from 'koa-router'
-import { isUndefined } from 'uxiu'
+import { isUndefined, createCheck } from 'uxiu'
 import { hash } from '#common'
 const router = new Router()
 export default router
@@ -11,7 +10,7 @@ router.patch('/:id', async (ctx) => {
 	if (!checkIdInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkIdInfo.failMessageList[0]
+			msg: checkIdInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -20,7 +19,7 @@ router.patch('/:id', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -63,6 +62,7 @@ const checkId = createCheck([
 const check = createCheck([
 	{
 		field: 'name',
+		required: false,
 		type: {
 			expect: 'string',
 			fail: '管理员名称必须为字符串'
@@ -72,15 +72,12 @@ const check = createCheck([
 				min: 1,
 				max: 10
 			},
-			fail: '管理员名称长度为1-10位',
-			verify(data, checkFn) {
-				if (isUndefined(data)) return true
-				return checkFn()
-			}
+			fail: '管理员名称长度为1-10位'
 		}
 	},
 	{
 		field: 'password',
+		required: false,
 		type: {
 			expect: 'string',
 			fail: '管理员密码必须为字符串',
@@ -94,11 +91,7 @@ const check = createCheck([
 				min: 5,
 				max: 12
 			},
-			fail: '管理员密码长度为5-12位',
-			verify(data, checkFn) {
-				if (isUndefined(data)) return true
-				return checkFn()
-			}
+			fail: '管理员密码长度为5-12位'
 		}
 	}
 ])

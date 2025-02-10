@@ -1,4 +1,4 @@
-import { createCheck } from '#utils'
+import { createCheck } from 'uxiu'
 import { group, link } from '#db'
 import Router from 'koa-router'
 const router = new Router()
@@ -9,7 +9,7 @@ router.del('/:id', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}

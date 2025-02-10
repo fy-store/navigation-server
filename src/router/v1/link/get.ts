@@ -1,7 +1,7 @@
 import { link } from '#db'
 import dayjs from 'dayjs'
 import Router from 'koa-router'
-import { createCheck } from '#utils'
+import { createCheck } from 'uxiu'
 const router = new Router()
 export default router
 
@@ -10,7 +10,7 @@ router.get('/', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}

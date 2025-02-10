@@ -1,4 +1,4 @@
-import { createCheck } from '#utils'
+import { createCheck } from 'uxiu'
 import { hash } from '#common'
 import { admin } from '#db'
 import Router from 'koa-router'
@@ -16,7 +16,7 @@ router.post('/', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}

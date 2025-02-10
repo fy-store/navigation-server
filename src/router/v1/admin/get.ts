@@ -1,7 +1,6 @@
 import { admin } from '#db'
 import Router from 'koa-router'
-import { createCheck } from '#utils'
-import { isUndefined } from 'uxiu'
+import { createCheck } from 'uxiu'
 const router = new Router()
 export default router
 
@@ -10,7 +9,7 @@ router.get('/', async (ctx) => {
 	if (!checkInfo.result) {
 		ctx.body = {
 			code: 1,
-			msg: checkInfo.failMessageList[0]
+			msg: checkInfo.fail.msgList[0]
 		}
 		return
 	}
@@ -53,13 +52,10 @@ const getListCheck = createCheck([
 	},
 	{
 		field: 'name',
+		required: false,
 		type: {
 			expect: 'string',
-			fail: 'name 必须是字符串',
-			verify(data, checkFn) {
-				if (isUndefined(data)) return true
-				return checkFn()
-			}
+			fail: 'name 必须是字符串'
 		}
 	}
 ])
